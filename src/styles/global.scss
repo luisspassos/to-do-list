@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --light-gray: #F1EEF2;
+  --pink: #E9ACFD;
+  --text-color: #696464;
+  --yellow: #FFE849;
+  --green: #00FF66;
+  --dark-color: #505050;
+}
+
+body, input, textarea, button {
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+}
