@@ -2,21 +2,42 @@
   background-color: var(--light-gray);
   min-height: 100vh;
 
+  transition: .4s;
+
+  &.isDark {
+    background-color: var(--dark-color)
+  }
+
   header {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: '. h1 button';
     align-items: center;
-    justify-content: center;
 
     padding: 10px 40px;
-    border: 1px solid var(--pink);
-    
-    position: relative;
+    border-bottom: 1px solid var(--pink);
 
+    transition: .4s;
+
+    &.isDark {
+      border-bottom: 1px solid white;
+    }
+    
     h1 {
       font-weight: 500;
+      grid-area: h1;
+      text-align: center;
+      transition: .4s;
+
+      &.isDark {
+        color: white;
+      }
     }
 
     .switcher {
+      grid-area: button;
+      justify-self: end;
+
       display: flex;
       align-items: center;
 
@@ -27,8 +48,13 @@
       border: 0;
       cursor: pointer;
 
-      position: absolute;
-      right: 40px;
+      position: relative;
+
+      transition: .4s;
+
+      &.isDark {
+        background-color: var(--light-gray);
+      }
 
       div {
         background-color: white;
@@ -41,16 +67,105 @@
         justify-content: center;
 
         position: absolute;
-        left: -1px;
+        right: 26px;
+
+        transition: .4s;
+
+        &.isDark {          
+          right: -1px;
+        }
       }
     }
   }
 
   main {
-    margin-top: 25px;
+    margin: 25px auto 0;
+    padding: 0 20px;
+    max-width: 700px;
 
     form {
-      display: flex;      
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+
+      button {
+        border: 0;
+        cursor: pointer;
+        background-color: var(--pink);
+        width: 240px;
+        border-radius: 3px;
+
+        font-size: 1.1em;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        
+        padding: 7px 10px;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
+    }
+
+    table {
+      margin-top: 50px;
+      width: 100%;
+      border-spacing: 0 7px;
+
+      tbody tr td:last-child,
+      thead tr th:last-child {
+        border-radius: 0 3px 3px 0;
+      }
+
+      tbody tr td:first-child,
+      thead tr th:first-child {
+        border-radius: 3px 0 0 3px;
+      }
+
+      tr {
+        background-color: #fff;
+        border-radius: 3px;
+      }
+
+      td, th {
+        padding: 10px;
+        text-align: center;
+      }
+
+      th {
+        font-weight: 500;
+      }
+
+      .task {
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden; 
+        text-overflow: ellipsis;
+      }
+
+      button {
+        border: 0;
+        background-color: var(--light-gray);
+        border-radius: 3px;
+
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+
+        font-weight: 500;
+        font-size: 1em;
+
+        padding: 4px;
+
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
     }
   }
 }
