@@ -22,9 +22,15 @@ export function Home() {
 
   const [tableData, setTableData] = useState<TableData>([])
 
-  useEffect(()=> {
-    getTheme()
+  useEffect(()=> {  
+    setIsDark(getTheme())
+
+    console.log(getTableData())
   }, [])
+
+  useEffect(()=> {
+    saveTableData()
+  }, [tableData])
 
   function removeOverdueTasks() {
     const todaysDateInMilliseconds = new Date().setHours(0, 0, 0, 0)
@@ -32,8 +38,20 @@ export function Home() {
     setTableData(tableData.filter(({timestamp})=> timestamp < todaysDateInMilliseconds))
   }
 
+  function saveTableData() {
+    localStorage.setItem('@tableData', JSON.stringify(tableData))
+  }
+
+  function getTableData() {
+    const tableData = JSON.parse(localStorage.getItem('@tableData') || '[]')
+
+    return tableData
+  }
+
   function getTheme() {
-    console.log(JSON.parse(localStorage.getItem('@isDark') || '{"isDark": false}'))
+    const { isDark } = JSON.parse(localStorage.getItem('@isDark') || '{"isDark": false}')
+
+    return isDark
   }
 
   function changeTheme(isDark: boolean) {
@@ -67,7 +85,6 @@ export function Home() {
 
     setExpirationDate('')
     setTask('')
-
   }
 
   function markTaskAsCompleted(taskIndex: number) {
