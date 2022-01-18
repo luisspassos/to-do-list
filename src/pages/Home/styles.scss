@@ -2,8 +2,6 @@
   background-color: var(--light-gray);
   min-height: 100vh;
 
-  transition: .4s;
-
   &.isDark {
     background-color: var(--dark-color)
   }
@@ -17,8 +15,6 @@
     padding: 10px 40px;
     border-bottom: 1px solid var(--pink);
 
-    transition: .4s;
-
     &.isDark {
       border-bottom: 1px solid white;
     }
@@ -27,7 +23,6 @@
       font-weight: 500;
       grid-area: h1;
       text-align: center;
-      transition: .4s;
 
       &.isDark {
         color: white;
@@ -50,8 +45,6 @@
 
       position: relative;
 
-      transition: .4s;
-
       &.isDark {
         background-color: var(--light-gray);
       }
@@ -68,8 +61,6 @@
 
         position: absolute;
         right: 26px;
-
-        transition: .4s;
 
         &.isDark {          
           right: -1px;
@@ -168,4 +159,8 @@
       }
     }
   }
+}
+
+.themeTransition {
+  transition: .4s;
 }

@@ -1,9 +1,12 @@
 import { FormEvent, useEffect, useState } from 'react'
+
 import { FiMoon, FiCheck } from 'react-icons/fi'
 import { IoAddCircleOutline } from 'react-icons/io5'
 import { BiSun } from 'react-icons/bi'
 
 import { Input } from '../../components/Input'
+
+import cn from 'classnames'
 
 import './styles.scss'
 
@@ -16,33 +19,43 @@ type TableData = Array<{
 export function Home() {
 
   const [isDark, setIsDark] = useState(false);
+  const [themeTransitionReleased, setThemeTransitionRelease] = useState(false);
 
   const [task, setTask] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
 
   const [tableData, setTableData] = useState<TableData>([])
 
+  const themeObj = {'isDark': isDark, 'themeTransition': themeTransitionReleased};
+
   useEffect(()=> {  
     setIsDark(getTheme())
-
-    console.log(getTableData())
+    setTableData(getTableData())
+    removeOverdueTasks()
+    releaseThemeTransition()
   }, [])
 
   useEffect(()=> {
     saveTableData()
   }, [tableData])
 
+  function releaseThemeTransition() {
+    setTimeout(()=> {
+      setThemeTransitionRelease(true)
+    }, 400)
+  }
+
   function removeOverdueTasks() {
     const todaysDateInMilliseconds = new Date().setHours(0, 0, 0, 0)
 
-    setTableData(tableData.filter(({timestamp})=> timestamp < todaysDateInMilliseconds))
-  }
+    setTableData(getTableData().filter(({timestamp})=> timestamp >= todaysDateInMilliseconds ))  
+  } 
 
   function saveTableData() {
     localStorage.setItem('@tableData', JSON.stringify(tableData))
   }
 
-  function getTableData() {
+  function getTableData(): TableData {
     const tableData = JSON.parse(localStorage.getItem('@tableData') || '[]')
 
     return tableData
@@ -92,11 +105,15 @@ export function Home() {
   }
 
   return(
-    <div className={`homePage ${isDark ? 'isDark' : ''}`}>
-      <header className={isDark ? 'isDark' : ''}>
-        <h1 className={isDark ? 'isDark' : ''}>To do List</h1>
-        <button onClick={() => changeTheme(!isDark)} className={`switcher ${isDark ? 'isDark' : ''}`} aria-label='Trocar tema de cor do site'>
-          <div className={isDark ? 'isDark' : ''}>
+    <div className={cn('homePage', themeObj)}>
+      <header className={cn(themeObj)}>
+        <h1 className={cn(themeObj)}>To do List</h1>
+        <button 
+          onClick={() => changeTheme(!isDark)} 
+          className={cn('switcher', themeObj)} 
+          aria-label='Trocar tema de cor do site'
+        >
+          <div className={cn(themeObj)}>
             {isDark ? 
               <BiSun color="var(--yellow)" size={19} />
               :
