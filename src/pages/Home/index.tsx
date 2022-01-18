@@ -26,7 +26,7 @@ export function Home() {
 
   const [tableData, setTableData] = useState<TableData>([])
 
-  const themeObj = {'isDark': isDark, 'themeTransition': themeTransitionReleased};
+  const themesClassObj = {'isDark': isDark, 'themeTransition': themeTransitionReleased};
 
   useEffect(()=> {  
     setIsDark(getTheme())
@@ -105,15 +105,15 @@ export function Home() {
   }
 
   return(
-    <div className={cn('homePage', themeObj)}>
-      <header className={cn(themeObj)}>
-        <h1 className={cn(themeObj)}>To do List</h1>
+    <div className={cn('homePage', themesClassObj)}>
+      <header className={cn(themesClassObj)}>
+        <h1 className={cn(themesClassObj)}>To do List</h1>
         <button 
           onClick={() => changeTheme(!isDark)} 
-          className={cn('switcher', themeObj)} 
+          className={cn('switcher', themesClassObj)} 
           aria-label='Trocar tema de cor do site'
         >
-          <div className={cn(themeObj)}>
+          <div className={cn(themesClassObj)}>
             {isDark ? 
               <BiSun color="var(--yellow)" size={19} />
               :
@@ -143,31 +143,33 @@ export function Home() {
           </button>
         </form>
 
-        <table>
-          <thead>
-            <tr>
-              <th scope='col'>Título</th>
-              <th scope='col'>Data de expiração</th>
-              <th scope='col'></th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.map(({task, expirationDate}, i) => {
-              return (
-                <tr key={i}>
-                  <td className="task" title={task}>{task}</td>
-                  <td>{expirationDate}</td>
-                  <td>
-                    <button onClick={()=> markTaskAsCompleted(i)}>
-                      <FiCheck color="var(--green)" size="20"/>
-                      Concluído
-                    </button>
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+        <div className="tableWrapper">
+          <table>
+            <thead>
+              <tr>
+                <th scope='col'>Título</th>
+                <th scope='col'>Data de expiração</th>
+                <th scope='col'></th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.map(({task, expirationDate}, i) => {
+                return (
+                  <tr key={i}>
+                    <td className="task" title={task}>{task}</td>
+                    <td>{expirationDate}</td>
+                    <td>
+                      <button onClick={()=> markTaskAsCompleted(i)}>
+                        <FiCheck color="var(--green)" size="20"/>
+                        Concluído
+                      </button>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
       </main>
     </div>
   )

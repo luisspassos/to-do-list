@@ -101,60 +101,65 @@
       }
     }
 
-    table {
-      margin-top: 50px;
+    .tableWrapper {
       width: 100%;
-      border-spacing: 0 7px;
+      overflow-x: auto;
 
-      tbody tr td:last-child,
-      thead tr th:last-child {
-        border-radius: 0 3px 3px 0;
-      }
-
-      tbody tr td:first-child,
-      thead tr th:first-child {
-        border-radius: 3px 0 0 3px;
-      }
-
-      tr {
-        background-color: #fff;
-        border-radius: 3px;
-      }
-
-      td, th {
-        padding: 10px;
-        text-align: center;
-      }
-
-      th {
-        font-weight: 500;
-      }
-
-      .task {
-        max-width: 200px;
-        white-space: nowrap;
-        overflow: hidden; 
-        text-overflow: ellipsis;
-      }
-
-      button {
-        border: 0;
-        background-color: var(--light-gray);
-        border-radius: 3px;
-
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-
-        font-weight: 500;
-        font-size: 1em;
-
-        padding: 4px;
-
-        cursor: pointer;
-
-        &:hover {
-          filter: brightness(0.9);
+      table {
+        margin-top: 50px;
+        width: 100%;
+        border-spacing: 0 7px;
+    
+        tbody tr td:last-child,
+        thead tr th:last-child {
+          border-radius: 0 3px 3px 0;
+        }
+  
+        tbody tr td:first-child,
+        thead tr th:first-child {
+          border-radius: 3px 0 0 3px;
+        }
+  
+        tr {
+          background-color: #fff;
+          border-radius: 3px;
+        }
+  
+        td, th {
+          padding: 10px;
+          text-align: center;
+        }
+  
+        th {
+          font-weight: 500;
+        }
+  
+        .task {
+          max-width: 200px;
+          white-space: nowrap;
+          overflow: hidden; 
+          text-overflow: ellipsis;
+        }
+  
+        button {
+          border: 0;
+          background-color: var(--light-gray);
+          border-radius: 3px;
+  
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+  
+          font-weight: 500;
+          font-size: 1em;
+  
+          padding: 4px;
+  
+          cursor: pointer;
+  
+          &:hover {
+            filter: brightness(0.9);
+          }
         }
       }
     }
