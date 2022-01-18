@@ -29,7 +29,7 @@ $ cd to-do-list
  # Start the project
  $ yarn start
  ```
- <p>The app will be available in your browser at the address <a href="http://localhost:3000">http://localhost:3000</a></p>
+ <p>The app will be available in your browser at the address <a href="http://localhost:3000">http://localhost:3000</a>.</p>
  
  ## 💻 Project
  
