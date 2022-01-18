@@ -34,3 +34,11 @@ $ cd to-do-list
  ## 💻 Project
  
  <p>This project was developed for me to strengthen my knowledge with React and also served as an entrance to the world of Typescript.</p>
+ 
+ ## 📝 License
+ 
+ <p>This project is under the MIT license. See the <a href="./LICENSE">LICENSE</a> file for more details.</p>
+ 
+ ---
+ 
+ <p>Made by 💜 by Luís 👋🏻</p>
