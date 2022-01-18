@@ -33,11 +33,11 @@ export function Home() {
     setTableData(getTableData())
     removeOverdueTasks()
     releaseThemeTransition()
-  }, [removeOverdueTasks])
+  }, [])
 
   useEffect(()=> {
     saveTableData()
-  }, [tableData, saveTableData])
+  }, [tableData])
 
   function releaseThemeTransition() {
     setTimeout(()=> {
