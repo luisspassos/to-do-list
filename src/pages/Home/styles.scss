@@ -80,6 +80,19 @@
       align-items: flex-end;
       gap: 10px;
 
+      .inputGroup {
+        width: 100%;
+
+        label {
+          display: block;
+          margin-bottom: 3px;
+
+          &.isDark {
+            color: white;
+          }
+        }
+      }
+
       button {
         border: 0;
         cursor: pointer;
@@ -88,7 +101,7 @@
         border-radius: 3px;
 
         font-size: 1.1em;
-
+        
         display: flex;
         align-items: center;
         gap: 10px;

@@ -125,18 +125,25 @@ export function Home() {
 
       <main>
         <form onSubmit={addTaskToTable}>
-          <Input 
-            onChange={event => setTask(event.target.value)} 
-            value={task}
-            type="text" 
-            placeholder="Tarefa..."
-          />
-          <Input 
-            onChange={event => setExpirationDate(event.target.value)}
-            value={expirationDate}
-            type="date" 
-            aria-placeholder="Coloque uma data limite para sua tarefa."
-          />
+          <div className="inputGroup">
+            <label htmlFor="task" className={cn(themesClassObj)}>Tarefa:</label>
+            <Input
+              onChange={event => setTask(event.target.value)}
+              value={task}
+              type="text"
+              placeholder="Tarefa..."
+              id='task'
+            />
+          </div>
+          <div className="inputGroup">
+            <label htmlFor="expirationDate" className={cn(themesClassObj)}>Data de expiração:</label>
+            <Input
+              onChange={event => setExpirationDate(event.target.value)}
+              value={expirationDate}
+              type="date"
+              id='expirationDate'
+            />
+          </div>
           <button type="submit">
             <IoAddCircleOutline color="var(--text-color)" size={25}/>
             Adicionar
